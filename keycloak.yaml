@@ -32,8 +32,7 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: quay.io/keycloak/keycloak:19.0.3
-          args: ["start"]
+          image: quay.io/keycloak/keycloak:9.0.3
           volumeMounts:
           - name: certs
             mountPath: "/etc/certs"
@@ -82,7 +81,7 @@ spec:
           readinessProbe:
             httpGet:
               scheme: HTTPS
-              path: /health/ready
+              path: /auth/realms/master
               port: 8443
             initialDelaySeconds: 60
             periodSeconds: 1
